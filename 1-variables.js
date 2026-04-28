@@ -16,7 +16,7 @@ avoid single letters (x, y, z) unless they are used in a very specific context (
 avoid abbreviations and acronyms that may not be universally understood.
 * Poor: usr_Cnt  *Good: User_Count
 
-3. Consistent Naming: A variable name should follow a consistent naming convention throughout the codebase. 
+3. CONSISTENT NAMING: A variable name should follow a consistent naming convention throughout the codebase. 
 Stick to one casing style throughout your project
 * Poor: userName, user_name, UserName  *Good: userName (camelCase)
 ---------------TYPES OF CASES ---------------
@@ -26,7 +26,8 @@ B. Camel Case: userRegistrationDate (Common in JavaScript/Java)
 
 C. Pascal Case: UserRegistrationDate (Common for Classes)
 
-4. INTENTION REVEALING:
-
+4. INTENTION REVEALING: A variable name should clearly reveal its purpose and the type of data it holds.
+* Poor: x, y, z  *Good: width, height, depth
+5. APPROPRIATE SCOPE AND LIFETIME: a good variable lives only as long it needs to
 
 */
