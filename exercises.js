@@ -40,3 +40,39 @@ let rate = 5;
 let time = 2;
 let simpleInterest = (principal * rate * time) / 100;
 console.log("Simple Interest:", simpleInterest); // Solution 100
+
+/*---------------------------------------TASKS ON CONDITIONS---MAY 4TH 2026------------------------------------*/
+/*1. Mobile Airtime Purchase Validator
+   A telecom system needs to validate airtime purchases. Write a function that:
+   - Takes phoneNumber, amount, and balance
+   - Checks:
+     - Phone number must be 10 digits
+     - Amount must be greater than 0
+     - User must have enough balance
+   - Deducts the amount if valid and returns the new balance
+   - Otherwise returns an error message */
+
+function validateAirtimePurchase(phoneNumber, amount, balance) {
+  // First level of validation
+  if (phoneNumber.length !== 10) {
+    return "Error: Phone number must be 10 digits.";
+  }
+  if (amount <= 0 || amount > balance) {
+    return "Error: Invalid amount or insufficient balance.";
+  }
+
+  // Define the helper function for the calculation
+  function calculateDeduction(phoneNumber, amount, balance) {
+    const newBalance = balance - amount;
+    return newBalance;
+  }
+
+  // CRITICAL STEP: Call the inner function and return its result!
+  return calculateDeduction(phoneNumber, amount, balance);
+}
+
+// Test cases
+console.log(validateAirtimePurchase("1234567890", 50, 100));
+console.log(validateAirtimePurchase("123456789", 50, 100));
+console.log(validateAirtimePurchase("1234567890", -10, 100));
+console.log(validateAirtimePurchase("1234567890", 150, 100));
