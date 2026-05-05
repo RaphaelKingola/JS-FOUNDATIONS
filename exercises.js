@@ -61,7 +61,7 @@ function validateAirtimePurchase(phoneNumber, amount, balance) {
     return "Error: Invalid amount or insufficient balance.";
   }
 
-  // Define the helper function for the calculation
+  // here i am defining the helper function for the calculation
   function calculateDeduction(phoneNumber, amount, balance) {
     const newBalance = balance - amount;
     return newBalance;
@@ -76,3 +76,103 @@ console.log(validateAirtimePurchase("1234567890", 50, 100));
 console.log(validateAirtimePurchase("123456789", 50, 100));
 console.log(validateAirtimePurchase("1234567890", -10, 100));
 console.log(validateAirtimePurchase("1234567890", 150, 100));
+/*4. Parking Fee Calculator
+   A parking system charges based on hours parked. Write a function that:
+   - Takes number of hours parked
+   - Charges:
+     - First 2 hours → KES 50/hour
+     - Additional hours → KES 30/hour
+   - Uses conditionals to calculate total cost*/
+function calculateParkingFee(hours) {
+  let totalCost;
+
+  if (hours <= 2) {
+    totalCost = hours * 50;
+  } else {
+    let firstTwoHoursCost = 2 * 50;
+    let extraHours = hours - 2;
+    let extraCost = extraHours * 30;
+
+    totalCost = firstTwoHoursCost + extraCost;
+  }
+
+  return totalCost;
+}
+
+console.log(calculateParkingFee(1)); // 50
+console.log(calculateParkingFee(2)); // 100
+console.log(calculateParkingFee(4)); // 160
+
+/*3. Supermarket Discount Calculator
+   A supermarket applies discounts based on total purchase. Write a function that:
+   - Takes an array of item prices
+   - Calculates total cost using a loop
+   - Applies:
+     - 10% discount if total > 5000
+     - 5% discount if total > 2000
+   - Returns final payable amount*/
+
+function calculateFinalAmount(prices) {
+  let total = 0;
+
+  // Step 1: Calculate total using loop
+  for (let i = 0; i < prices.length; i++) {
+    total += prices[i];
+  }
+
+  // Step 2: Apply discount
+  if (total > 5000) {
+    total = total * 0.9; // 10% discount
+  } else if (total > 2000) {
+    total = total * 0.95; // 5% discount
+  }
+
+  return total;
+}
+
+console.log(calculateFinalAmount([1000, 2000, 3000])); // 5400
+console.log(calculateFinalAmount([500, 800, 900])); // 2200 → 2090
+console.log(calculateFinalAmount([500, 400])); // 900 (no discount)
+
+/*2. Student Grade Processing System
+   A school wants to automate grading. Write a function that:
+   - Accepts an array of student scores
+   - Uses a loop to:
+     - Assign grades: 70+ → A, 60–69 → B, 50–59 → C, Below 50 → Fail
+   - Returns a summary:
+     - Total students
+     - Number of passes and fails*/
+function processGrades(scores) {
+  let totalStudents = scores.length;
+  let passCount = 0;
+  let failCount = 0;
+
+  for (let score of scores) {
+    let grade;
+
+    if (score >= 70) {
+      grade = "A";
+      passCount++;
+    } else if (score >= 60) {
+      grade = "B";
+      passCount++;
+    } else if (score >= 50) {
+      grade = "C";
+      passCount++;
+    } else {
+      grade = "Fail";
+      failCount++;
+    }
+
+    console.log(`Score: ${score} → Grade: ${grade}`);
+  }
+
+  return {
+    totalStudents,
+    passCount,
+    failCount,
+  };
+}
+
+let result = processGrades([75, 62, 48, 90, 55, 30]);
+console.log(result);
